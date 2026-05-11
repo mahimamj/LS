@@ -156,6 +156,8 @@ function setupCarousels() {
     if (!track || !prev || !next) return;
     const slides = Array.from(track.querySelectorAll(".award-photo"));
     if (!slides.length) return;
+    const autoplayDelay = Number(carousel.dataset.carouselAutoplay || 0);
+    let autoplayTimer = null;
 
     const dots = document.createElement("div");
     dots.className = "carousel-dots";
@@ -190,16 +192,40 @@ function setupCarousels() {
       });
     };
 
+    const goToSlide = (index) => {
+      const wrappedIndex = (index + slides.length) % slides.length;
+      track.scrollTo({ left: wrappedIndex * getStep(), behavior: "smooth" });
+    };
+
+    const getActiveIndex = () => Math.round(track.scrollLeft / getStep());
+
+    const restartAutoplay = () => {
+      if (!autoplayDelay) return;
+      window.clearInterval(autoplayTimer);
+      autoplayTimer = window.setInterval(() => {
+        goToSlide(getActiveIndex() + 1);
+      }, autoplayDelay);
+    };
+
     prev.addEventListener("click", () => {
-      track.scrollBy({ left: -getStep(), behavior: "smooth" });
+      goToSlide(getActiveIndex() - 1);
+      restartAutoplay();
     });
 
     next.addEventListener("click", () => {
-      track.scrollBy({ left: getStep(), behavior: "smooth" });
+      goToSlide(getActiveIndex() + 1);
+      restartAutoplay();
     });
 
     track.addEventListener("scroll", updateButtons, { passive: true });
     window.addEventListener("resize", updateButtons);
+    if (autoplayDelay) {
+      carousel.addEventListener("mouseenter", () => window.clearInterval(autoplayTimer));
+      carousel.addEventListener("mouseleave", restartAutoplay);
+      carousel.addEventListener("focusin", () => window.clearInterval(autoplayTimer));
+      carousel.addEventListener("focusout", restartAutoplay);
+      restartAutoplay();
+    }
     updateButtons();
   });
 }
