@@ -200,8 +200,36 @@ function renderShell() {
   const menuToggle = document.getElementById("menu-toggle");
   const navbar = document.getElementById("navbar");
   if (menuToggle && navbar) {
-    menuToggle.addEventListener("click", () => navbar.classList.toggle("open"));
+    menuToggle.addEventListener("click", () => {
+      navbar.classList.toggle("open");
+      const isOpen = navbar.classList.contains("open");
+      menuToggle.innerHTML = isOpen ? "✕" : "☰";
+    });
   }
+
+  // Mobile Accordion Dropdowns
+  const dropdownToggles = document.querySelectorAll(".nav-dropdown-toggle");
+  dropdownToggles.forEach(toggle => {
+    toggle.addEventListener("click", (e) => {
+      if (window.innerWidth <= 991) {
+        e.preventDefault();
+        const parent = toggle.closest(".nav-dropdown");
+        
+        // Collapse other dropdowns
+        document.querySelectorAll(".nav-dropdown").forEach(dropdown => {
+          if (dropdown !== parent) {
+            dropdown.classList.remove("expanded");
+            const btn = dropdown.querySelector(".nav-dropdown-toggle");
+            if (btn) btn.setAttribute("aria-expanded", "false");
+          }
+        });
+
+        parent.classList.toggle("expanded");
+        const isExpanded = parent.classList.contains("expanded");
+        toggle.setAttribute("aria-expanded", isExpanded ? "true" : "false");
+      }
+    });
+  });
 }
 
 function setupContactForms() {

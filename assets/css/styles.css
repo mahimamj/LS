@@ -125,8 +125,10 @@ img { max-width: 100%; display: block; }
   box-shadow: var(--shadow-lg); opacity: 0; visibility: hidden; transform: translate(-50%, 6px);
   transition: all 0.2s ease;
 }
-.nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown:focus-within .nav-dropdown-menu {
-  opacity: 1; visibility: visible; transform: translate(-50%, 0);
+@media (min-width: 992px) {
+  .nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown:focus-within .nav-dropdown-menu {
+    opacity: 1; visibility: visible; transform: translate(-50%, 0);
+  }
 }
 .nav-dropdown-menu a { 
   display: block; 
@@ -1473,7 +1475,15 @@ tr:nth-child(even) { background-color: var(--surface-alt); }
   .navbar.open .nav-links { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 1.25rem; }
   .navbar.open .nav-actions { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.25rem; }
   
+  .nav-dropdown-toggle span {
+    transition: transform 0.2s ease;
+    display: inline-block;
+  }
+  .nav-dropdown.expanded .nav-dropdown-toggle span {
+    transform: rotate(180deg);
+  }
   .navbar.open .nav-dropdown-menu { 
+    display: none;
     position: static; 
     width: 100%; 
     transform: none; 
@@ -1484,6 +1494,9 @@ tr:nth-child(even) { background-color: var(--surface-alt); }
     border: none !important; 
     padding-left: 1rem; 
     margin-top: 0.5rem; 
+  }
+  .navbar.open .nav-dropdown.expanded .nav-dropdown-menu {
+    display: grid;
   }
   .navbar.open .nav-dropdown-menu a {
     color: rgba(255, 255, 255, 0.8) !important;
@@ -1981,4 +1994,140 @@ tr:nth-child(even) { background-color: var(--surface-alt); }
 }
 .awards-page .carousel-dots {
   margin-top: 1rem;
+}
+
+/* ==========================================================================
+   CATEGORY GUIDE SECTION STYLING
+   ========================================================================== */
+.category-guide-section {
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  padding: 5.5rem 0;
+}
+.category-guide-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 3rem;
+  align-items: start;
+}
+.guide-content-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  box-shadow: var(--shadow);
+}
+.guide-content-card h3 {
+  font-family: "Sora", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-deep);
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+.guide-content-card p {
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+.parameter-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1.5rem;
+}
+.parameter-item {
+  display: flex;
+  gap: 1.25rem;
+  align-items: start;
+}
+.parameter-icon {
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  background: rgba(var(--accent-rgb), 0.1);
+  color: var(--accent);
+  display: grid;
+  place-items: center;
+  font-family: "Sora", sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  flex-shrink: 0;
+  border: 1px solid rgba(var(--accent-rgb), 0.2);
+}
+.parameter-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.parameter-details strong {
+  font-family: "Sora", sans-serif;
+  font-size: 1.1rem;
+  color: var(--primary-deep);
+  font-weight: 700;
+}
+.parameter-details span {
+  font-size: 0.92rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.guide-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.guide-stat-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  border-top: 3px solid var(--accent);
+}
+.guide-stat-card h3 {
+  font-family: "Sora", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary-deep);
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+.guide-stat-card p {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Custom styled guide sidebar card with dark gradient from html inline style */
+.guide-sidebar .guide-stat-card[style*="linear-gradient"] h3 {
+  color: #ffffff;
+}
+.guide-sidebar .guide-stat-card[style*="linear-gradient"] p {
+  color: rgba(255, 255, 255, 0.85);
+}
+.guide-sidebar .guide-stat-card[style*="linear-gradient"] {
+  border-top: 0;
+  border-left: 3px solid var(--accent);
+}
+
+/* Responsive category guide */
+@media (max-width: 991px) {
+  .category-guide-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+@media (max-width: 640px) {
+  .guide-content-card {
+    padding: 1.5rem;
+  }
+  .guide-stat-card {
+    padding: 1.5rem;
+  }
+  .parameter-item {
+    gap: 0.85rem;
+  }
 }
