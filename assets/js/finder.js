@@ -100,7 +100,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const application = data.get("application");
     const problem = data.get("problem");
     const recommendation = getRecommendation(industry, application, problem);
-    const message = `Hello Lubricant Solutions, I need an exact recommendation.%0AIndustry: ${industry}%0AApplication: ${application}%0AProblem: ${problem}%0ARecommended type shown on website: ${recommendation.type}`;
+    const formatLabel = (str) => str ? str.charAt(0).toUpperCase() + str.slice(1) : "";
+    const message = `*Lubricant Finder Inquiry* 🔍
+
+Hello Lubricant Solutions, I used the online Lubricant Finder tool and would like to get an exact product/brand recommendation.
+
+🏭 *Industry:* ${formatLabel(industry)}
+⚙️ *Application:* ${formatLabel(application)}
+⚠️ *Problem:* ${formatLabel(problem)}
+
+💡 *Recommended Type:* ${recommendation.type}
+
+Please share the recommended product grades and pricing.`;
     result.innerHTML = `
       <h3>Recommended Lubrication Direction</h3>
       <p><strong>Recommended lubricant type:</strong> ${recommendation.type}</p>

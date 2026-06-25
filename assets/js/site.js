@@ -237,7 +237,16 @@ function setupContactForms() {
     form.addEventListener("submit", (event) => {
       event.preventDefault();
       const data = new FormData(form);
-      const message = `*New Consultation Request* 🛠️%0A%0AHello Lubricant Solutions, I would like to request a technical consultation. Here are my details:%0A%0A👤 *Name:* ${data.get("name") || ""}%0A📞 *Phone:* ${data.get("phone") || ""}%0A⚙️ *Requirement:* ${data.get("requirement") || ""}%0A%0A---%0A🌐 *Source:* ${data.get("source") || "website inquiry"}`;
+      const message = `*New Consultation Request* 🛠️
+
+Hello Lubricant Solutions, I would like to request a technical consultation. Here are my details:
+
+👤 *Name:* ${data.get("name") || ""}
+📞 *Phone:* ${data.get("phone") || ""}
+⚙️ *Requirement:* ${data.get("requirement") || ""}
+
+---
+🌐 *Source:* ${data.get("source") || "website inquiry"}`;
       window.open(buildWhatsAppLink(message), "_blank", "noopener");
     });
   });
