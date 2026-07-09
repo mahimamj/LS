@@ -81,6 +81,76 @@ const lubricantRecommendations = {
   }
 };
 
+const applicationLabels = {
+  gear: "Industrial Gearboxes",
+  hydraulic: "Hydraulic Systems",
+  compressor: "Air Compressors",
+  grease: "Grease & Bearings",
+  metalworking: "Metal Working / Coolant"
+};
+
+const problemLabels = {
+  overheating: "Overheating / Thermal stress",
+  wear: "Excessive Wear & friction",
+  noise: "Noise & vibration issues"
+};
+
+function updateApplicationDropdown(form, industryVal) {
+  const appSelect = form.querySelector('[name="application"]');
+  const probSelect = form.querySelector('[name="problem"]');
+  if (!appSelect) return;
+
+  appSelect.innerHTML = '<option value="">Choose application</option>';
+  
+  if (!industryVal || !lubricantRecommendations[industryVal]) {
+    appSelect.disabled = true;
+    if (probSelect) {
+      probSelect.innerHTML = '<option value="">Choose problem</option>';
+      probSelect.disabled = true;
+    }
+    return;
+  }
+
+  const availableApps = Object.keys(lubricantRecommendations[industryVal]);
+  availableApps.forEach(appKey => {
+    const label = applicationLabels[appKey] || appKey.charAt(0).toUpperCase() + appKey.slice(1);
+    const option = document.createElement("option");
+    option.value = appKey;
+    option.textContent = label;
+    appSelect.appendChild(option);
+  });
+  
+  appSelect.disabled = false;
+  
+  if (probSelect) {
+    probSelect.innerHTML = '<option value="">Choose problem</option>';
+    probSelect.disabled = true;
+  }
+}
+
+function updateProblemDropdown(form, industryVal, appVal) {
+  const probSelect = form.querySelector('[name="problem"]');
+  if (!probSelect) return;
+
+  probSelect.innerHTML = '<option value="">Choose problem</option>';
+  
+  if (!industryVal || !appVal || !lubricantRecommendations[industryVal]?.[appVal]) {
+    probSelect.disabled = true;
+    return;
+  }
+
+  const availableProbs = Object.keys(lubricantRecommendations[industryVal][appVal]);
+  availableProbs.forEach(probKey => {
+    const label = problemLabels[probKey] || probKey.charAt(0).toUpperCase() + probKey.slice(1);
+    const option = document.createElement("option");
+    option.value = probKey;
+    option.textContent = label;
+    probSelect.appendChild(option);
+  });
+  
+  probSelect.disabled = false;
+}
+
 function getRecommendation(industry, application, problem) {
   return lubricantRecommendations[industry]?.[application]?.[problem] || {
     type: "Application-specific industrial lubricant",
@@ -93,6 +163,29 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("finder-form");
   const result = document.getElementById("finder-result");
   if (!form || !result) return;
+  
+  const industrySelect = form.querySelector('[name="industry"]');
+  const appSelect = form.querySelector('[name="application"]');
+  const probSelect = form.querySelector('[name="problem"]');
+  
+  if (industrySelect && appSelect) {
+    if (!industrySelect.value) {
+      appSelect.innerHTML = '<option value="">Choose application</option>';
+      appSelect.disabled = true;
+      if (probSelect) {
+        probSelect.innerHTML = '<option value="">Choose problem</option>';
+        probSelect.disabled = true;
+      }
+    }
+    
+    industrySelect.addEventListener("change", (e) => {
+      updateApplicationDropdown(form, e.target.value);
+    });
+    
+    appSelect.addEventListener("change", (e) => {
+      updateProblemDropdown(form, industrySelect.value, e.target.value);
+    });
+  }
   
   form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -127,6 +220,14 @@ document.addEventListener("DOMContentLoaded", () => {
       if (resetBtn) {
         resetBtn.addEventListener("click", () => {
           form.reset();
+          if (appSelect) {
+            appSelect.innerHTML = '<option value="">Choose application</option>';
+            appSelect.disabled = true;
+          }
+          if (probSelect) {
+            probSelect.innerHTML = '<option value="">Choose problem</option>';
+            probSelect.disabled = true;
+          }
           widgetCard.classList.remove("has-result");
           result.style.display = "none";
         });

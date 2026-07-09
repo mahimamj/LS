@@ -455,6 +455,13 @@ img { max-width: 100%; display: block; }
   box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
 }
 
+.field-widget select:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
 /* Dropdown list styling */
 .field-widget select option {
   background-color: #0c1a30;
