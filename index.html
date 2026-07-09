@@ -122,40 +122,60 @@
           </div>
         </div>
         
-        <div class="hero-visual reveal delay-1">
-          <!-- HERO METRICS WIDGETS STACK -->
-          <div class="hero-metrics-stack">
-            <!-- Card 1 -->
-            <div class="metric-card card-blue">
-              <div class="metric-icon">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg>
-              </div>
-              <div class="metric-info">
-                <h3>&darr; <span class="metric-label">DOWNTIME</span></h3>
-                <p>Minimize unplanned shutdowns</p>
-              </div>
+          <!-- HERO LUBRICANT FINDER WIDGET -->
+          <div class="finder-widget-card">
+            <div class="finder-widget-header">
+              <span class="finder-widget-eyebrow">Interactive Tool</span>
+              <h3>Lubricant Finder</h3>
+              <p>Get instant recommendations for your plant operating conditions.</p>
             </div>
             
-            <!-- Card 2 -->
-            <div class="metric-card card-green">
-              <div class="metric-icon">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 18l-9.5-9.5-5 5L1 6"/><path d="M17 18h6v-6"/></svg>
+            <form id="finder-form" class="finder-form-widget">
+              <div class="field-widget">
+                <label for="industry">Select Industry</label>
+                <div class="select-wrapper">
+                  <select id="industry" name="industry" required>
+                    <option value="">Choose industry</option>
+                    <option value="textile">Textile Manufacturing</option>
+                    <option value="steel">Steel & Metal Plants</option>
+                    <option value="automotive">Automotive Components</option>
+                    <option value="plastics">Plastic & Injection Molding</option>
+                    <option value="manufacturing">SMEs & General Mfg</option>
+                  </select>
+                </div>
               </div>
-              <div class="metric-info">
-                <h3>&uarr; <span class="metric-label">MACHINE LIFE</span></h3>
-                <p>Extend equipment life with proper lubrication</p>
+              
+              <div class="field-widget">
+                <label for="application">Select Application</label>
+                <div class="select-wrapper">
+                  <select id="application" name="application" required>
+                    <option value="">Choose application</option>
+                    <option value="gear">Industrial Gearboxes</option>
+                    <option value="hydraulic">Hydraulic Systems</option>
+                    <option value="compressor">Air Compressors</option>
+                    <option value="grease">Grease & Bearings</option>
+                    <option value="metalworking">Metal Working/Coolant</option>
+                  </select>
+                </div>
               </div>
-            </div>
+              
+              <div class="field-widget">
+                <label for="problem">Select Primary Issue</label>
+                <div class="select-wrapper">
+                  <select id="problem" name="problem" required>
+                    <option value="">Choose problem</option>
+                    <option value="overheating">Overheating / Thermal stress</option>
+                    <option value="wear">Excessive Wear & friction</option>
+                    <option value="noise">Noise & vibration issues</option>
+                  </select>
+                </div>
+              </div>
+              
+              <button class="btn btn-secondary btn-full" type="submit">Show Recommendation</button>
+            </form>
             
-            <!-- Card 3 -->
-            <div class="metric-card card-yellow">
-              <div class="metric-icon">
-                <span class="currency-symbol">&#8377;</span>
-              </div>
-              <div class="metric-info">
-                <h3>&darr; <span class="metric-label">MAINTENANCE COST</span></h3>
-                <p>Lower maintenance and operating costs</p>
-              </div>
+            <div class="result-box-widget" id="finder-result" style="display: none;">
+              <!-- Result content will be set dynamically via finder.js -->
             </div>
           </div>
         </div>
@@ -755,6 +775,7 @@
   </main>
   <div id="site-footer"></div>
   <script src="/assets/js/site.js"></script>
+  <script src="/assets/js/finder.js"></script>
   <script>
     // Intersection Observer to mimic Framer Motion smooth fade-ins on scroll
     document.addEventListener("DOMContentLoaded", function() {

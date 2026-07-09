@@ -93,6 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("finder-form");
   const result = document.getElementById("finder-result");
   if (!form || !result) return;
+  
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     const data = new FormData(form);
@@ -100,28 +101,36 @@ document.addEventListener("DOMContentLoaded", () => {
     const application = data.get("application");
     const problem = data.get("problem");
     const recommendation = getRecommendation(industry, application, problem);
+    
     const formatLabel = (str) => str ? str.charAt(0).toUpperCase() + str.slice(1) : "";
-    const message = `*Lubricant Finder Inquiry* 🔍
-
-Hello Lubricant Solutions, I used the online Lubricant Finder tool and would like to get an exact product/brand recommendation.
-
-🏭 *Industry:* ${formatLabel(industry)}
-⚙️ *Application:* ${formatLabel(application)}
-⚠️ *Problem:* ${formatLabel(problem)}
-
-💡 *Recommended Type:* ${recommendation.type}
-
-Please share the recommended product grades and pricing.`;
+    const message = `*Lubricant Finder Inquiry* 🔍\n\nHello Lubricant Solutions, I used the online Lubricant Finder tool and would like to get an exact product/brand recommendation.\n\n🏭 *Industry:* ${formatLabel(industry)}\n⚙️ *Application:* ${formatLabel(application)}\n⚠️ *Problem:* ${formatLabel(problem)}\n\n💡 *Recommended Type:* ${recommendation.type}\n\nPlease share the recommended product grades and pricing.`;
+    
+    const widgetCard = form.closest(".finder-widget-card");
+    
     result.innerHTML = `
       <h3>Recommended Lubrication Direction</h3>
       <p><strong>Recommended lubricant type:</strong> ${recommendation.type}</p>
       <p><strong>Suggested product category:</strong> ${recommendation.category}</p>
       <p><strong>Why this fits:</strong> ${recommendation.why}</p>
-      <div class="pill-row"><span class="pill">${industry}</span><span class="pill">${application}</span><span class="pill">${problem}</span></div>
+      <div class="pill-row"><span class="pill">${formatLabel(industry)}</span><span class="pill">${formatLabel(application)}</span><span class="pill">${formatLabel(problem)}</span></div>
       <div class="stack-actions">
-        <a class="btn btn-primary" href="${buildWhatsAppLink(message)}" target="_blank" rel="noopener">Get Exact Recommendation on WhatsApp</a>
-        <a class="btn btn-ghost" href="/contact.html">Request a Site Consultation</a>
+        <a class="btn btn-primary" href="${buildWhatsAppLink(message)}" target="_blank" rel="noopener">Get Recommendation on WhatsApp</a>
+        ${widgetCard ? `<button type="button" class="btn btn-ghost" id="finder-reset-btn">Find Another Lubricant</button>` : `<a class="btn btn-ghost" href="/contact.html">Request a Site Consultation</a>`}
       </div>
     `;
+    
+    if (widgetCard) {
+      result.style.display = "block";
+      widgetCard.classList.add("has-result");
+      
+      const resetBtn = document.getElementById("finder-reset-btn");
+      if (resetBtn) {
+        resetBtn.addEventListener("click", () => {
+          form.reset();
+          widgetCard.classList.remove("has-result");
+          result.style.display = "none";
+        });
+      }
+    }
   });
 });
