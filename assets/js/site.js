@@ -67,22 +67,10 @@ function renderShell() {
       </div>
       <nav class="navbar" id="navbar">
         <div class="container">
-          <a class="brand" href="/index.html" aria-label="Lubricant Solutions Home">
-            <img class="brand-logo-img" src="/assets/images/logo.png" alt="Lubricant Solutions Logo">
-          </a>
-          <div class="nav-links">
+          <!-- Left Navigation Links -->
+          <div class="nav-links nav-links-left">
             <a href="/index.html" class="${currentPath === "/index.html" ? "active" : ""}">Home</a>
             
-            <div class="nav-dropdown">
-              <button class="nav-dropdown-toggle ${currentPath.startsWith("/category/") ? "active" : ""}" type="button" aria-expanded="false">
-                Solutions
-                <span aria-hidden="true">&#9662;</span>
-              </button>
-              <div class="nav-dropdown-menu">
-                ${categoryItems.map((item) => `<a href="${item.href}" class="${normalizePath(item.href) === currentPath ? "active" : ""}">${item.label}</a>`).join("")}
-              </div>
-            </div>
-
             <div class="nav-dropdown">
               <button class="nav-dropdown-toggle ${currentPath.startsWith("/industries/") ? "active" : ""}" type="button" aria-expanded="false">
                 Industries
@@ -97,23 +85,45 @@ function renderShell() {
               </div>
             </div>
 
-            <a href="/about.html" class="${currentPath === "/about.html" ? "active" : ""}">About Us</a>
-
             <div class="nav-dropdown">
-              <button class="nav-dropdown-toggle ${currentPath === "/awards.html" || currentPath === "/finder.html" || currentPath.startsWith("/blog/") ? "active" : ""}" type="button" aria-expanded="false">
-                Resources
+              <button class="nav-dropdown-toggle ${currentPath.startsWith("/category/") ? "active" : ""}" type="button" aria-expanded="false">
+                Solutions
                 <span aria-hidden="true">&#9662;</span>
               </button>
               <div class="nav-dropdown-menu">
-                <a href="/awards.html" class="${currentPath === "/awards.html" ? "active" : ""}">Awards & Recognition</a>
-                <a href="/blog/index.html" class="${currentPath.startsWith("/blog/") ? "active" : ""}">Knowledge Hub</a>
-                <a href="/finder.html" class="${currentPath === "/finder.html" ? "active" : ""}">Lubricant Finder</a>
+                ${categoryItems.map((item) => `<a href="${item.href}" class="${normalizePath(item.href) === currentPath ? "active" : ""}">${item.label}</a>`).join("")}
               </div>
             </div>
           </div>
-          <div class="nav-actions">
-            <a class="btn btn-primary nav-cta" href="/contact.html">REQUEST CONSULTATION</a>
+
+          <!-- Centered Brand Logo -->
+          <a class="brand" href="/index.html" aria-label="Lubricant Solutions Home">
+            <img class="brand-logo-img" src="/assets/images/logo.png" alt="Lubricant Solutions Logo">
+          </a>
+
+          <!-- Right Navigation Links & Actions -->
+          <div class="nav-right-group">
+            <div class="nav-links nav-links-right">
+              <a href="/about.html" class="${currentPath === "/about.html" ? "active" : ""}">About Us</a>
+
+              <div class="nav-dropdown">
+                <button class="nav-dropdown-toggle ${currentPath === "/awards.html" || currentPath === "/finder.html" || currentPath.startsWith("/blog/") ? "active" : ""}" type="button" aria-expanded="false">
+                  Resources
+                  <span aria-hidden="true">&#9662;</span>
+                </button>
+                <div class="nav-dropdown-menu">
+                  <a href="/awards.html" class="${currentPath === "/awards.html" ? "active" : ""}">Awards & Recognition</a>
+                  <a href="/blog/index.html" class="${currentPath.startsWith("/blog/") ? "active" : ""}">Knowledge Hub</a>
+                  <a href="/finder.html" class="${currentPath === "/finder.html" ? "active" : ""}">Lubricant Finder</a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="nav-actions">
+              <a class="btn btn-primary nav-cta" href="/contact.html">REQUEST CONSULTATION</a>
+            </div>
           </div>
+          
           <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">☰</button>
         </div>
       </nav>
@@ -125,8 +135,8 @@ function renderShell() {
       <footer class="footer">
         <div class="container">
           <div class="footer-grid">
-            <div>
-              <h3>Products</h3>
+            <div class="footer-column">
+              <h3 class="footer-column-header">Products <span class="footer-accordion-icon">&#9656;</span></h3>
               <div class="footer-links">
                 <a href="/category/machine-equipment-oils.html">Machine & Equipment Oils</a>
                 <a href="/category/hydraulic-power-transmission.html">Hydraulic & Power Transmission</a>
@@ -135,8 +145,8 @@ function renderShell() {
                 <a href="/category/greases.html">Greases</a>
               </div>
             </div>
-            <div>
-              <h3>Industries</h3>
+            <div class="footer-column">
+              <h3 class="footer-column-header">Industries <span class="footer-accordion-icon">&#9656;</span></h3>
               <div class="footer-links">
                 <a href="/industries/textile-industry-lubricants.html">Textile Manufacturing</a>
                 <a href="/industries/steel-metal-industry-lubricants.html">Steel Plants</a>
@@ -145,8 +155,8 @@ function renderShell() {
                 <a href="/industries/smes-manufacturing-plants-lubricants.html">General Manufacturing</a>
               </div>
             </div>
-            <div>
-              <h3>Services</h3>
+            <div class="footer-column">
+              <h3 class="footer-column-header">Services <span class="footer-accordion-icon">&#9656;</span></h3>
               <div class="footer-links">
                 <a href="/services/condition-monitoring.html">Condition Monitoring</a>
                 <a href="/services/coolant-management.html">Coolant Management</a>
@@ -155,8 +165,8 @@ function renderShell() {
                 <a href="/services/technical-support.html">Technical Support</a>
               </div>
             </div>
-            <div>
-              <h3>Company</h3>
+            <div class="footer-column">
+              <h3 class="footer-column-header">Company <span class="footer-accordion-icon">&#9656;</span></h3>
               <div class="footer-links">
                 <a href="/about.html">About Us</a>
                 <a href="/awards.html">Awards & Recognition</a>
@@ -165,8 +175,8 @@ function renderShell() {
                 <a href="/contact.html">Contact Us</a>
               </div>
             </div>
-            <div>
-              <h3>Contact</h3>
+            <div class="footer-column">
+              <h3 class="footer-column-header">Contact <span class="footer-accordion-icon">&#9656;</span></h3>
               <div class="footer-links">
                 ${siteConfig.phones.map(p => `<a href="${p.href}">${p.display}</a>`).join("")}
                 ${siteConfig.emails.map(e => `<a href="mailto:${e}">${e}</a>`).join("")}
@@ -334,8 +344,151 @@ function setupCarousels() {
   });
 }
 
+function setupBrandSlider() {
+  const track = document.querySelector(".brand-slider-track");
+  const dots = document.querySelectorAll(".slider-dot");
+  const prevBtn = document.querySelector(".prev-arrow");
+  const nextBtn = document.querySelector(".next-arrow");
+  if (!track) return;
+
+  const slides = Array.from(track.querySelectorAll(".brand-slide"));
+  if (!slides.length) return;
+
+  let currentIndex = 0;
+  let autoplayTimer = null;
+  const autoplayDelay = 5000; // 5 seconds per slide
+
+  const getSlideWidth = () => track.clientWidth;
+
+  const updateActiveState = (index) => {
+    currentIndex = index;
+    dots.forEach((dot, idx) => {
+      dot.classList.toggle("active", idx === currentIndex);
+    });
+  };
+
+  const scrollToSlide = (index) => {
+    const targetScrollLeft = index * getSlideWidth();
+    track.scrollTo({ left: targetScrollLeft, behavior: "smooth" });
+    updateActiveState(index);
+  };
+
+  const nextSlide = () => {
+    const nextIdx = (currentIndex + 1) % slides.length;
+    scrollToSlide(nextIdx);
+  };
+
+  const prevSlide = () => {
+    const prevIdx = (currentIndex - 1 + slides.length) % slides.length;
+    scrollToSlide(prevIdx);
+  };
+
+  if (prevBtn) prevBtn.addEventListener("click", () => {
+    prevSlide();
+    startAutoplay();
+  });
+
+  if (nextBtn) nextBtn.addEventListener("click", () => {
+    nextSlide();
+    startAutoplay();
+  });
+
+  dots.forEach((dot, idx) => {
+    dot.addEventListener("click", () => {
+      scrollToSlide(idx);
+      startAutoplay();
+    });
+  });
+
+  // Track manual scrolling to update dots on scroll-snap
+  let scrollTimeout;
+  track.addEventListener("scroll", () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      const index = Math.round(track.scrollLeft / getSlideWidth());
+      if (index !== currentIndex && index >= 0 && index < slides.length) {
+        updateActiveState(index);
+      }
+    }, 100);
+  });
+
+  const startAutoplay = () => {
+    clearInterval(autoplayTimer);
+    autoplayTimer = setInterval(nextSlide, autoplayDelay);
+  };
+
+  const stopAutoplay = () => {
+    clearInterval(autoplayTimer);
+  };
+
+  // Pause autoplay on mouse enter/focus
+  const container = document.querySelector(".brand-slider-container");
+  if (container) {
+    container.addEventListener("mouseenter", stopAutoplay);
+    container.addEventListener("mouseleave", startAutoplay);
+    container.addEventListener("focusin", stopAutoplay);
+    container.addEventListener("focusout", startAutoplay);
+  }
+
+  startAutoplay();
+}
+
+function setupLogoInteraction() {
+  const brand = document.querySelector(".brand");
+  if (!brand) return;
+  const logo = brand.querySelector(".brand-logo-img");
+  if (!logo) return;
+
+  brand.addEventListener("mousemove", (e) => {
+    const rect = brand.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    
+    // Magnetic pull limits
+    const maxTilt = 15; // degrees
+    const tiltX = -(y / (rect.height / 2)) * maxTilt;
+    const tiltY = (x / (rect.width / 2)) * maxTilt;
+    
+    // Apply transform
+    logo.style.transform = `perspective(300px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(1.06, 1.06, 1.06)`;
+    logo.style.boxShadow = `0 15px 30px rgba(212, 175, 55, 0.25), 0 0 15px rgba(212, 175, 55, 0.2)`;
+    logo.style.borderColor = "var(--accent)";
+  });
+
+  brand.addEventListener("mouseleave", () => {
+    logo.style.transform = "perspective(300px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)";
+    logo.style.boxShadow = "none";
+    logo.style.borderColor = "transparent";
+  });
+}
+
+function setupFooterAccordions() {
+  const footerHeaders = document.querySelectorAll(".footer-column-header");
+  footerHeaders.forEach(header => {
+    header.addEventListener("click", () => {
+      if (window.innerWidth <= 640) {
+        const parent = header.closest(".footer-column");
+        if (!parent) return;
+        const isOpen = parent.classList.contains("open");
+        
+        // Close other footer sections
+        document.querySelectorAll(".footer-column").forEach(col => {
+          if (col !== parent) {
+            col.classList.remove("open");
+          }
+        });
+        
+        parent.classList.toggle("open");
+      }
+    });
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   renderShell();
   setupContactForms();
   setupCarousels();
+  setupBrandSlider();
+  setupLogoInteraction();
+  setupFooterAccordions();
 });
