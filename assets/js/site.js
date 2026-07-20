@@ -14,12 +14,11 @@ const siteConfig = {
 };
 
 const categoryItems = [
-  { href: "/category/machine-equipment-oils.html", label: "Machine & Equipment Oils" },
   { href: "/category/hydraulic-power-transmission.html", label: "Hydraulic & Power Transmission" },
   { href: "/category/metalworking-forming.html", label: "Metalworking & Forming" },
   { href: "/category/cooling-thermal-management.html", label: "Cooling & Thermal Management" },
-  { href: "/category/textile-machinery-lubricants.html", label: "Textile Machinery Lubricants" },
-  { href: "/category/protection-preservation.html", label: "Protection & Preservation" },
+  { href: "/category/textile-machinery.html", label: "Textile Machinery" },
+  { href: "/category/rust-protection.html", label: "Rust Protection" },
   { href: "/category/speciality-marine-oils.html", label: "Speciality & Marine Oils" },
   { href: "/category/greases.html", label: "Greases" }
 ];
@@ -138,10 +137,12 @@ function renderShell() {
             <div class="footer-column">
               <h3 class="footer-column-header">Products <span class="footer-accordion-icon">&#9656;</span></h3>
               <div class="footer-links">
-                <a href="/category/machine-equipment-oils.html">Machine & Equipment Oils</a>
                 <a href="/category/hydraulic-power-transmission.html">Hydraulic & Power Transmission</a>
                 <a href="/category/metalworking-forming.html">Metalworking & Forming</a>
                 <a href="/category/cooling-thermal-management.html">Cooling & Thermal Management</a>
+                <a href="/category/textile-machinery.html">Textile Machinery</a>
+                <a href="/category/rust-protection.html">Rust Protection</a>
+                <a href="/category/speciality-marine-oils.html">Speciality & Marine Oils</a>
                 <a href="/category/greases.html">Greases</a>
               </div>
             </div>

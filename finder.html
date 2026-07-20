@@ -37,9 +37,38 @@
         <div class="finder-panel">
           <h2>Lubricant Solution Finder</h2>
           <form id="finder-form" class="finder-form">
-            <div class="field"><label for="industry">Select Industry</label><select id="industry" name="industry" required><option value="">Choose industry</option><option value="textile">Textile</option><option value="steel">Steel & Metal</option><option value="automotive">Automotive Components</option><option value="plastics">Plastic & Injection Molding</option><option value="manufacturing">SMEs & Manufacturing Plants</option></select></div>
-            <div class="field"><label for="application">Select Application</label><select id="application" name="application" required><option value="">Choose application</option><option value="gear">Gear</option><option value="hydraulic">Hydraulic</option><option value="compressor">Compressor</option><option value="grease">Grease / Bearings</option><option value="metalworking">Metal Working</option></select></div>
-            <div class="field"><label for="problem">Select Problem</label><select id="problem" name="problem" required><option value="">Choose problem</option><option value="overheating">Overheating</option><option value="wear">Wear</option><option value="noise">Noise</option></select></div>
+            <div class="field">
+              <label for="industry">Select Industry</label>
+              <select id="industry" name="industry" required>
+                <option value="">Choose industry</option>
+                <option value="textile_hosiery">Textile & Hosiery Industry</option>
+                <option value="bicycle">Bicycle Industry</option>
+                <option value="auto_engineering">Auto Parts & Engineering Industry</option>
+                <option value="machine_tools">Machine Tools Industry</option>
+                <option value="forging">Forging Industry</option>
+                <option value="hand_tools">Hand Tools Industry</option>
+                <option value="fasteners">Industrial Fasteners Industry</option>
+                <option value="agricultural">Agricultural Equipment Industry</option>
+                <option value="steel_processing">Steel & Metal Processing</option>
+                <option value="foundry">Foundry Industry</option>
+                <option value="rubber_plastic">Rubber & Plastic Industry</option>
+                <option value="electrical_electronics">Electrical & Electronics Industry</option>
+                <option value="food_processing">Food Processing Industry</option>
+                <option value="other">Other (Please specify)</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="application">Select Application</label>
+              <select id="application" name="application" required disabled>
+                <option value="">Choose application</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="problem">Select Problem</label>
+              <select id="problem" name="problem" required disabled>
+                <option value="">Choose problem</option>
+              </select>
+            </div>
             <button class="btn btn-secondary" type="submit">Show Recommendation</button>
           </form>
           <div class="result-box" id="finder-result">
