@@ -66,44 +66,12 @@ function renderShell() {
       </div>
       <nav class="navbar" id="navbar">
         <div class="container navbar-container">
-          <!-- 1. Left Brand Logo (Reference Match) -->
+          <!-- 1. Far Left Brand Logo -->
           <a class="brand" href="/index.html" aria-label="Lubricant Solutions Home">
             <img class="brand-logo-img" src="/assets/images/logo.png" alt="Lubricant Solutions Logo">
           </a>
 
-          <!-- 2. Minimal Ultra-Clean Navigation Links -->
-          <div class="nav-links">
-            <a href="/index.html" class="${currentPath === "/index.html" ? "active" : ""}">Home</a>
-            <a href="/about.html" class="${currentPath === "/about.html" ? "active" : ""}">About Us</a>
-
-            <div class="nav-dropdown">
-              <button class="nav-dropdown-toggle ${currentPath.startsWith("/category/") ? "active" : ""}" type="button" aria-expanded="false">
-                Products
-                <span aria-hidden="true">&#9662;</span>
-              </button>
-              <div class="nav-dropdown-menu">
-                ${categoryItems.map((item) => `<a href="${item.href}" class="${normalizePath(item.href) === currentPath ? "active" : ""}">${item.label}</a>`).join("")}
-              </div>
-            </div>
-
-            <div class="nav-dropdown">
-              <button class="nav-dropdown-toggle ${currentPath.startsWith("/industries/") ? "active" : ""}" type="button" aria-expanded="false">
-                Industries
-                <span aria-hidden="true">&#9662;</span>
-              </button>
-              <div class="nav-dropdown-menu">
-                <a href="/industries/textile-industry-lubricants.html">Textile Manufacturing</a>
-                <a href="/industries/steel-metal-industry-lubricants.html">Steel Plants</a>
-                <a href="/industries/auto-components-industry-lubricants.html">Automotive Industry</a>
-                <a href="/industries/plastic-injection-molding-lubricants.html">Injection Molding</a>
-                <a href="/industries/smes-manufacturing-plants-lubricants.html">General Manufacturing</a>
-              </div>
-            </div>
-
-            <a href="/contact.html" class="${currentPath === "/contact.html" ? "active" : ""}">Contact</a>
-          </div>
-
-          <!-- 3. Right Action Controls with 3-Line Menu Button -->
+          <!-- 2. Far Right Action Controls with 3-Line Menu Button -->
           <div class="nav-right-actions">
             <a class="nav-phone-link" href="${siteConfig.phones[0].href}">
               <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -123,7 +91,7 @@ function renderShell() {
         </div>
       </nav>
 
-      <!-- 4. Slide-Out Side Navigation Overlay Drawer (Three Line Menu Drawer) -->
+      <!-- 3. Slide-Out Side Navigation Overlay Drawer (Three Line Menu Drawer) -->
       <div class="drawer-overlay" id="drawer-overlay"></div>
       <aside class="nav-drawer" id="nav-drawer" aria-hidden="true">
         <div class="drawer-header">
@@ -134,6 +102,15 @@ function renderShell() {
         </div>
         <div class="drawer-content">
           <div class="drawer-grid">
+            <div class="drawer-col">
+              <h4 class="drawer-heading">Main Navigation</h4>
+              <ul class="drawer-menu-list">
+                <li><a href="/index.html" class="${currentPath === "/index.html" ? "active" : ""}">Home</a></li>
+                <li><a href="/about.html" class="${currentPath === "/about.html" ? "active" : ""}">About Us</a></li>
+                <li><a href="/contact.html" class="${currentPath === "/contact.html" ? "active" : ""}">Contact Us</a></li>
+                <li><a href="/finder.html" class="${currentPath === "/finder.html" ? "active" : ""}">Lubricant Selection Finder</a></li>
+              </ul>
+            </div>
             <div class="drawer-col">
               <h4 class="drawer-heading">Product Categories</h4>
               <ul class="drawer-menu-list">
@@ -151,13 +128,10 @@ function renderShell() {
               </ul>
             </div>
             <div class="drawer-col">
-              <h4 class="drawer-heading">Resources & Support</h4>
+              <h4 class="drawer-heading">Knowledge & Awards</h4>
               <ul class="drawer-menu-list">
-                <li><a href="/about.html">About Us & Legacy</a></li>
                 <li><a href="/awards.html">Awards & Recognition</a></li>
                 <li><a href="/blog/index.html">Knowledge Hub & Guides</a></li>
-                <li><a href="/finder.html">Lubricant Selection Finder</a></li>
-                <li><a href="/contact.html">Contact Us & Map</a></li>
               </ul>
             </div>
           </div>
