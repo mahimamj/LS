@@ -277,13 +277,10 @@ function renderShell() {
     `;
   }
 
-  const menuToggle = document.getElementById("menu-toggle");
   const navbar = document.getElementById("navbar");
   if (menuToggle && navbar) {
     menuToggle.addEventListener("click", () => {
       navbar.classList.toggle("open");
-      const isOpen = navbar.classList.contains("open");
-      menuToggle.innerHTML = isOpen ? "✕" : "☰";
     });
   }
 
