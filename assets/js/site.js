@@ -65,9 +65,14 @@ function renderShell() {
         </div>
       </div>
       <nav class="navbar" id="navbar">
-        <div class="container">
-          <!-- Left Navigation Links -->
-          <div class="nav-links nav-links-left">
+        <div class="container navbar-container">
+          <!-- 1. Left Brand Logo (Reference Match) -->
+          <a class="brand" href="/index.html" aria-label="Lubricant Solutions Home">
+            <img class="brand-logo-img" src="/assets/images/logo.png" alt="Lubricant Solutions Logo">
+          </a>
+
+          <!-- 2. Center Navigation Links -->
+          <div class="nav-links">
             <a href="/index.html" class="${currentPath === "/index.html" ? "active" : ""}">Home</a>
             
             <div class="nav-dropdown">
@@ -93,37 +98,36 @@ function renderShell() {
                 ${categoryItems.map((item) => `<a href="${item.href}" class="${normalizePath(item.href) === currentPath ? "active" : ""}">${item.label}</a>`).join("")}
               </div>
             </div>
-          </div>
 
-          <!-- Centered Brand Logo -->
-          <a class="brand" href="/index.html" aria-label="Lubricant Solutions Home">
-            <img class="brand-logo-img" src="/assets/images/logo.png" alt="Lubricant Solutions Logo">
-          </a>
+            <a href="/about.html" class="${currentPath === "/about.html" ? "active" : ""}">About Us</a>
 
-          <!-- Right Navigation Links & Actions -->
-          <div class="nav-right-group">
-            <div class="nav-links nav-links-right">
-              <a href="/about.html" class="${currentPath === "/about.html" ? "active" : ""}">About Us</a>
-
-              <div class="nav-dropdown">
-                <button class="nav-dropdown-toggle ${currentPath === "/awards.html" || currentPath === "/finder.html" || currentPath.startsWith("/blog/") ? "active" : ""}" type="button" aria-expanded="false">
-                  Resources
-                  <span aria-hidden="true">&#9662;</span>
-                </button>
-                <div class="nav-dropdown-menu">
-                  <a href="/awards.html" class="${currentPath === "/awards.html" ? "active" : ""}">Awards & Recognition</a>
-                  <a href="/blog/index.html" class="${currentPath.startsWith("/blog/") ? "active" : ""}">Knowledge Hub</a>
-                  <a href="/finder.html" class="${currentPath === "/finder.html" ? "active" : ""}">Lubricant Finder</a>
-                </div>
+            <div class="nav-dropdown">
+              <button class="nav-dropdown-toggle ${currentPath === "/awards.html" || currentPath === "/finder.html" || currentPath.startsWith("/blog/") ? "active" : ""}" type="button" aria-expanded="false">
+                Resources
+                <span aria-hidden="true">&#9662;</span>
+              </button>
+              <div class="nav-dropdown-menu">
+                <a href="/awards.html" class="${currentPath === "/awards.html" ? "active" : ""}">Awards & Recognition</a>
+                <a href="/blog/index.html" class="${currentPath.startsWith("/blog/") ? "active" : ""}">Knowledge Hub</a>
+                <a href="/finder.html" class="${currentPath === "/finder.html" ? "active" : ""}">Lubricant Finder</a>
               </div>
             </div>
-            
-            <div class="nav-actions">
-              <a class="btn btn-primary nav-cta" href="/contact.html">REQUEST CONSULTATION</a>
-            </div>
+
+            <a href="/contact.html" class="${currentPath === "/contact.html" ? "active" : ""}">Contact</a>
           </div>
-          
-          <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">☰</button>
+
+          <!-- 3. Right Action Group (Reference Match) -->
+          <div class="nav-right-actions">
+            <a class="nav-phone-link" href="${siteConfig.phones[0].href}">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span>${siteConfig.phones[0].display}</span>
+            </a>
+
+            <a class="btn nav-pill-btn" href="/finder.html">LUBRICANT FINDER</a>
+            <a class="btn nav-cta-btn" href="/contact.html">GET CONSULTATION</a>
+
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">☰</button>
+          </div>
         </div>
       </nav>
     `;
