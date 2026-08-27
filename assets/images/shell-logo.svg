@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 70" width="240" height="70">
+  <g transform="translate(8, 4)">
+    <!-- Shell Scallop Body (Official Yellow) -->
+    <path d="M 30 2 C 20 10 10 22 5 36 L 10 48 Q 30 56 50 48 L 55 36 C 50 22 40 10 30 2 Z" fill="#FFD500" stroke="#DD1D21" stroke-width="2.5" stroke-linejoin="round"/>
+    <!-- Shell Base Flange (Official Red) -->
+    <path d="M 10 48 L 5 57 L 55 57 L 50 48 Z" fill="#DD1D21"/>
+    <!-- Scallop Inner Ridges -->
+    <path d="M 30 2 L 30 57" stroke="#DD1D21" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M 30 2 Q 18 25 18 57" fill="none" stroke="#DD1D21" stroke-width="2.5"/>
+    <path d="M 30 2 Q 42 25 42 57" fill="none" stroke="#DD1D21" stroke-width="2.5"/>
+    <path d="M 30 2 Q 8 26 10 48" fill="none" stroke="#DD1D21" stroke-width="2"/>
+    <path d="M 30 2 Q 52 26 50 48" fill="none" stroke="#DD1D21" stroke-width="2"/>
+  </g>
+  <!-- Shell Typography Wordmark -->
+  <text x="75" y="45" font-family="'Futura', 'Sora', 'Arial Black', 'Trebuchet MS', sans-serif" font-size="34" font-weight="900" fill="#DD1D21" letter-spacing="0.5">Shell</text>
+</svg>

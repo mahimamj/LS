@@ -2624,9 +2624,6 @@ tr:nth-child(even) { background-color: var(--surface-alt); }
 .gandhar-logo {
   background: linear-gradient(135deg, #003366 0%, #3399CC 100%);
 }
-.hitech-logo {
-  background: linear-gradient(135deg, #E31B23 0%, #000 100%);
-}
 .premium-logo {
   background: linear-gradient(135deg, #D4AF37 0%, #8A6E17 100%);
 }
@@ -2739,4 +2736,53 @@ tr:nth-child(even) { background-color: var(--surface-alt); }
   .brand-slider-dots {
     bottom: 0.75rem;
   }
+}
+
+/* ALSO DEALS IN BRANDS STYLING */
+.deals-in-section {
+  margin-top: 3.5rem;
+  width: 100%;
+  text-align: center;
+}
+.deals-in-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent, #f59e0b);
+  margin-bottom: 1.25rem;
+}
+.deals-in-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.85rem;
+  margin-top: 1rem;
+}
+.deal-brand-card {
+  background: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+  color: #1e293b;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  min-width: 120px;
+}
+.deal-brand-logo {
+  max-height: 32px;
+  max-width: 110px;
+  object-fit: contain;
+}
+.deal-brand-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent, #f59e0b);
+  box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
 }
