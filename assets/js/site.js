@@ -71,10 +71,21 @@ function renderShell() {
             <img class="brand-logo-img" src="/assets/images/logo.png" alt="Lubricant Solutions Logo">
           </a>
 
-          <!-- 2. Center Navigation Links -->
+          <!-- 2. Minimal Ultra-Clean Navigation Links -->
           <div class="nav-links">
             <a href="/index.html" class="${currentPath === "/index.html" ? "active" : ""}">Home</a>
-            
+            <a href="/about.html" class="${currentPath === "/about.html" ? "active" : ""}">About Us</a>
+
+            <div class="nav-dropdown">
+              <button class="nav-dropdown-toggle ${currentPath.startsWith("/category/") ? "active" : ""}" type="button" aria-expanded="false">
+                Products
+                <span aria-hidden="true">&#9662;</span>
+              </button>
+              <div class="nav-dropdown-menu">
+                ${categoryItems.map((item) => `<a href="${item.href}" class="${normalizePath(item.href) === currentPath ? "active" : ""}">${item.label}</a>`).join("")}
+              </div>
+            </div>
+
             <div class="nav-dropdown">
               <button class="nav-dropdown-toggle ${currentPath.startsWith("/industries/") ? "active" : ""}" type="button" aria-expanded="false">
                 Industries
@@ -89,34 +100,10 @@ function renderShell() {
               </div>
             </div>
 
-            <div class="nav-dropdown">
-              <button class="nav-dropdown-toggle ${currentPath.startsWith("/category/") ? "active" : ""}" type="button" aria-expanded="false">
-                Solutions
-                <span aria-hidden="true">&#9662;</span>
-              </button>
-              <div class="nav-dropdown-menu">
-                ${categoryItems.map((item) => `<a href="${item.href}" class="${normalizePath(item.href) === currentPath ? "active" : ""}">${item.label}</a>`).join("")}
-              </div>
-            </div>
-
-            <a href="/about.html" class="${currentPath === "/about.html" ? "active" : ""}">About Us</a>
-
-            <div class="nav-dropdown">
-              <button class="nav-dropdown-toggle ${currentPath === "/awards.html" || currentPath === "/finder.html" || currentPath.startsWith("/blog/") ? "active" : ""}" type="button" aria-expanded="false">
-                Resources
-                <span aria-hidden="true">&#9662;</span>
-              </button>
-              <div class="nav-dropdown-menu">
-                <a href="/awards.html" class="${currentPath === "/awards.html" ? "active" : ""}">Awards & Recognition</a>
-                <a href="/blog/index.html" class="${currentPath.startsWith("/blog/") ? "active" : ""}">Knowledge Hub</a>
-                <a href="/finder.html" class="${currentPath === "/finder.html" ? "active" : ""}">Lubricant Finder</a>
-              </div>
-            </div>
-
             <a href="/contact.html" class="${currentPath === "/contact.html" ? "active" : ""}">Contact</a>
           </div>
 
-          <!-- 3. Right Action Group (Reference Match) -->
+          <!-- 3. Right Action Controls with 3-Line Menu Button -->
           <div class="nav-right-actions">
             <a class="nav-phone-link" href="${siteConfig.phones[0].href}">
               <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -126,12 +113,90 @@ function renderShell() {
             <a class="btn nav-pill-btn" href="/finder.html">LUBRICANT FINDER</a>
             <a class="btn nav-cta-btn" href="/contact.html">GET CONSULTATION</a>
 
-            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">☰</button>
+            <!-- 3-Line Hamburger Button -->
+            <button class="menu-toggle-btn" id="menu-toggle" aria-label="Open Full Navigation Menu" title="Menu">
+              <span class="hamburger-bar"></span>
+              <span class="hamburger-bar"></span>
+              <span class="hamburger-bar"></span>
+            </button>
           </div>
         </div>
       </nav>
+
+      <!-- 4. Slide-Out Side Navigation Overlay Drawer (Three Line Menu Drawer) -->
+      <div class="drawer-overlay" id="drawer-overlay"></div>
+      <aside class="nav-drawer" id="nav-drawer" aria-hidden="true">
+        <div class="drawer-header">
+          <div class="drawer-brand">
+            <img src="/assets/images/logo.png" alt="Lubricant Solutions Logo" class="drawer-logo">
+          </div>
+          <button class="drawer-close-btn" id="drawer-close" aria-label="Close menu">&times;</button>
+        </div>
+        <div class="drawer-content">
+          <div class="drawer-grid">
+            <div class="drawer-col">
+              <h4 class="drawer-heading">Product Categories</h4>
+              <ul class="drawer-menu-list">
+                ${categoryItems.map(item => `<li><a href="${item.href}">${item.label}</a></li>`).join("")}
+              </ul>
+            </div>
+            <div class="drawer-col">
+              <h4 class="drawer-heading">Industry Solutions</h4>
+              <ul class="drawer-menu-list">
+                <li><a href="/industries/textile-industry-lubricants.html">Textile Manufacturing</a></li>
+                <li><a href="/industries/steel-metal-industry-lubricants.html">Steel Plants</a></li>
+                <li><a href="/industries/auto-components-industry-lubricants.html">Automotive Industry</a></li>
+                <li><a href="/industries/plastic-injection-molding-lubricants.html">Injection Molding</a></li>
+                <li><a href="/industries/smes-manufacturing-plants-lubricants.html">General Manufacturing</a></li>
+              </ul>
+            </div>
+            <div class="drawer-col">
+              <h4 class="drawer-heading">Resources & Support</h4>
+              <ul class="drawer-menu-list">
+                <li><a href="/about.html">About Us & Legacy</a></li>
+                <li><a href="/awards.html">Awards & Recognition</a></li>
+                <li><a href="/blog/index.html">Knowledge Hub & Guides</a></li>
+                <li><a href="/finder.html">Lubricant Selection Finder</a></li>
+                <li><a href="/contact.html">Contact Us & Map</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="drawer-footer-actions">
+            <a class="btn btn-primary btn-block" href="/contact.html">REQUEST CONSULTATION</a>
+            <a class="btn btn-secondary btn-block" href="${buildWhatsAppLink("Hello, I need lubrication advice.")}" target="_blank" rel="noopener">WHATSAPP BUSINESS CHAT</a>
+          </div>
+        </div>
+      </aside>
     `;
   }
+
+  // 3-Line Menu Drawer Interactivity
+  const menuToggle = document.getElementById("menu-toggle");
+  const navDrawer = document.getElementById("nav-drawer");
+  const drawerOverlay = document.getElementById("drawer-overlay");
+  const drawerClose = document.getElementById("drawer-close");
+
+  function openDrawer() {
+    if (navDrawer && drawerOverlay) {
+      navDrawer.classList.add("active");
+      drawerOverlay.classList.add("active");
+      navDrawer.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+  }
+
+  function closeDrawer() {
+    if (navDrawer && drawerOverlay) {
+      navDrawer.classList.remove("active");
+      drawerOverlay.classList.remove("active");
+      navDrawer.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+  }
+
+  if (menuToggle) menuToggle.addEventListener("click", openDrawer);
+  if (drawerClose) drawerClose.addEventListener("click", closeDrawer);
+  if (drawerOverlay) drawerOverlay.addEventListener("click", closeDrawer);
 
   if (footer) {
     footer.innerHTML = `
