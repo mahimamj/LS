@@ -214,7 +214,7 @@ img {
 }
 
 .brand-logo-img {
-  height: clamp(38px, 4.5vh, 46px);
+  height: clamp(52px, 6.5vh, 65px);
   width: auto;
   display: block;
   object-fit: contain;
@@ -397,7 +397,7 @@ img {
 }
 
 .drawer-logo {
-  height: 36px;
+  height: 48px;
   background: #fff;
   padding: 4px 10px;
   border-radius: 6px;
